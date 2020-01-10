@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-list>
+    <div fxLayout="row layout-wrap">
+      <div fxFlex="80">
+        <ng-content select="mat-card-title"></ng-content>
+        <ng-content select="mat-card-subtitle"></ng-content>
+      </div>
+      <div *ngIf="privateNotes" fxFlex="20" fxLayoutAlign="center center">
+        <mat-icon 
+          class="material-icons md-36"
+          (click)="onAdd()">add</mat-icon>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let note of notes">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <h4 mat-line> {{ note.name }} </h4>
+      <p mat-line> Modified on. {{ note.modifiedDate }} </p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

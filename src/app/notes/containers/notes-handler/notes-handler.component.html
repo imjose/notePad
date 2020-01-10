@@ -1,0 +1,41 @@
+
+<div fxLayout="row layout-wrap">
+  <mat-card fxFlex="100"  >
+    <form 
+      [formGroup]="noteForm" 
+      (ngSubmit)="onSubmit()"
+      fxLayout="row layout-wrap">
+      <mat-form-field fxFlex="60" appearance="legacy">
+        <mat-label>Name your note</mat-label>
+        <input 
+          formControlName="name"
+          matInput>
+      </mat-form-field>
+      <div fxFlex="13" fxLayoutAlign="center center" >
+        <mat-checkbox
+          formControlName="isPublic">Public
+        </mat-checkbox>
+      </div>
+      <div fxFlex="13" fxLayoutAlign="center center">
+        <button mat-raised-button color="accent">Share!</button>
+      </div>
+      <div fxFlex="13" fxLayoutAlign="center center" >
+        <button 
+          mat-raised-button 
+          type="submit"
+          color="primary">Save</button>
+      </div>
+      <mat-form-field fxFlex="100" hintLabel="Min 15 characters">
+        <textarea
+          matInput
+          formControlName="content"
+          placeholder="Place your content"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card>
+</div>
+
+<br>Dirty: {{ noteForm.dirty }}
+<br>Touched: {{ noteForm.touched }}
+<br>Valid: {{ noteForm.valid }}
+<br>Value: {{ noteForm.value | json }}

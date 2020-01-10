@@ -1,0 +1,8 @@
+
+<app-notes-view
+  [notes] = "(userNotes$ | async)"
+  (selectedNote) = "onNote($event)"
+  [privateNotes] = "true">
+  <mat-card-title>My Notes</mat-card-title>
+  <mat-card-subtitle>Notes that you have created.</mat-card-subtitle>
+</app-notes-view>

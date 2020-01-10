@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card class="content">
+    <mat-card-header>
+      <mat-card-title>
+        {{ formName }}
+      </mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="onSave()" [formGroup]="authForm">
+      <mat-card id="error" *ngIf="error">
+        {{ error.message }}
+      </mat-card>
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"/>
+      </mat-form-field>
+      
+      <div *ngIf="newUser">
+        <mat-form-field appearance="outline">
+          <mat-label>First name (required)</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="firstName"/>
+        </mat-form-field>
+      </div>
+
+      <button
+      mat-raised-button 
+      color="primary"
+      type="submit">{{ formName }}</button>
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <button id="footer"
+      mat-raised-button 
+      color="accent"
+      (click)="onClick()"> {{ newUser ? 'Back to login' : 'Sign Up' }} </button>
+
+  </mat-card>
+</div>

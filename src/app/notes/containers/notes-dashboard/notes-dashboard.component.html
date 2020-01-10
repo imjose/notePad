@@ -1,0 +1,13 @@
+<p>notes-dashboard works!</p>
+
+<div fxLayout="row layout-wrap" fxLayoutAlign="space-evenly">
+  <app-notes-user fxFlex="30"></app-notes-user>
+  <app-notes-public fxFlex="30"></app-notes-public>
+  <app-notes-shared fxFlex="30"></app-notes-shared>
+  <div id="divider" fxFlex="100">
+    <mat-divider></mat-divider>
+  </div>
+  <div fxFlex="50">
+    <router-outlet></router-outlet>
+  </div>
+</div>
