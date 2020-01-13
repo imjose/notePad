@@ -1,1 +1,18 @@
-<p>notes-content works!</p>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ note?.name }}</mat-card-title>
+    <mat-card-subtitle> {{ note?.modifiedDate | date }} </mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <p id="content">
+      {{ note?.content }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions *ngIf="note?.canEdit">
+    <button 
+      mat-button
+      (click)="onNote(note.id)" >EDIT</button>
+  </mat-card-actions>
+</mat-card>

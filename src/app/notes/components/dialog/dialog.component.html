@@ -1,0 +1,20 @@
+
+<h1 mat-dialog-title>Shared with:</h1>
+<div mat-dialog-content>
+  <mat-list *ngFor="let item of data">
+    <mat-list-item role="listitem">
+      <mat-icon 
+        mat-list-icon
+        (click)="onDelete(item)">delete</mat-icon>
+      {{ item }}
+    </mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+  <mat-form-field>
+    <input matInput [formControl]="email" placeholder="Add an email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onAdd()" [disabled]="email.invalid">Add</button>
+  <button mat-button (click)="onClose()">Close</button>
+</div>

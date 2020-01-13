@@ -1,21 +1,29 @@
 <mat-card>
-  <mat-list>
     <div fxLayout="row layout-wrap">
       <div fxFlex="80">
         <ng-content select="mat-card-title"></ng-content>
         <ng-content select="mat-card-subtitle"></ng-content>
       </div>
-      <div *ngIf="privateNotes" fxFlex="20" fxLayoutAlign="center center">
-        <mat-icon 
-          class="material-icons md-36"
-          (click)="onAdd()">add</mat-icon>
+      <div *ngIf="privateNotes" fxFlex="20">
+        <button 
+          mat-fab
+          (click)="onAdd()"
+          color="primary">
+          <mat-icon class="">add</mat-icon>
+        </button>
       </div>
     </div>
     <mat-divider></mat-divider>
-    <mat-list-item *ngFor="let note of notes">
-      <mat-icon mat-list-icon>note</mat-icon>
-      <h4 mat-line> {{ note.name }} </h4>
-      <p mat-line> Modified on. {{ note.modifiedDate }} </p>
-    </mat-list-item>
-  </mat-list>
+    <mat-list [ngClass]="{ 'private' : privateNotes }">
+      <cdk-virtual-scroll-viewport itemSize="72" [ngClass]="{ 'private' : privateNotes }">
+        <div *cdkVirtualFor="let note of notes; last as last">
+          <mat-list-item (click)="onClick(note)" class="note" [ngClass]="{ 'selected' : selectedId === note.id }">
+            <mat-icon mat-list-icon>note</mat-icon>
+            <h4 mat-line> {{ note.name }} </h4>
+            <p mat-line> Modified on. {{ note.modifiedDate | date }} </p>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </mat-list>
 </mat-card>

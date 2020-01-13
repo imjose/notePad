@@ -1,6 +1,7 @@
 
 <app-notes-view
-  [notes] = "(publicNotes$ | async)">
+  [notes] = "(publicNotes$ | async)"
+  (selectedNote) = "onNote($event)">
   <mat-card-title>Public Notes</mat-card-title>
-  <mat-card-subtitle>Notes that been posted as public.</mat-card-subtitle>
+  <mat-card-subtitle>Notes posted as public.</mat-card-subtitle>
 </app-notes-view>

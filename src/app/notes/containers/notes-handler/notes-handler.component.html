@@ -1,41 +1,47 @@
+<div *ngIf="onEdit === false; then thenBlock else elseBlock"></div>
 
-<div fxLayout="row layout-wrap">
-  <mat-card fxFlex="100"  >
-    <form 
-      [formGroup]="noteForm" 
-      (ngSubmit)="onSubmit()"
-      fxLayout="row layout-wrap">
-      <mat-form-field fxFlex="60" appearance="legacy">
-        <mat-label>Name your note</mat-label>
-        <input 
-          formControlName="name"
-          matInput>
-      </mat-form-field>
-      <div fxFlex="13" fxLayoutAlign="center center" >
-        <mat-checkbox
-          formControlName="isPublic">Public
-        </mat-checkbox>
-      </div>
-      <div fxFlex="13" fxLayoutAlign="center center">
-        <button mat-raised-button color="accent">Share!</button>
-      </div>
-      <div fxFlex="13" fxLayoutAlign="center center" >
-        <button 
-          mat-raised-button 
-          type="submit"
-          color="primary">Save</button>
-      </div>
-      <mat-form-field fxFlex="100" hintLabel="Min 15 characters">
-        <textarea
-          matInput
-          formControlName="content"
-          placeholder="Place your content"></textarea>
-      </mat-form-field>
-    </form>
-  </mat-card>
-</div>
+<ng-template #thenBlock>
+  <app-notes-content
+    [note] = "(Note$ | async)"
+    (toEdit) = "goEdit($event)">
+  </app-notes-content>
+</ng-template>
 
-<br>Dirty: {{ noteForm.dirty }}
-<br>Touched: {{ noteForm.touched }}
-<br>Valid: {{ noteForm.valid }}
-<br>Value: {{ noteForm.value | json }}
+<ng-template #elseBlock>
+  <div fxLayout="row layout-wrap">
+    <mat-card fxFlex="100">
+      <form 
+        [formGroup]="noteForm" 
+        fxLayout="row layout-wrap">
+        <mat-form-field fxFlex="49" appearance="legacy">
+          <mat-label>Name your note</mat-label>
+          <input 
+            formControlName="name"
+            matInput>
+        </mat-form-field>
+        <div fxFlex="17" fxLayoutAlign="center center" >
+          <mat-checkbox
+            formControlName="isPublic"
+            (click)="isPublicToogle()">Public
+          </mat-checkbox>
+        </div>
+        <div fxFlex="17" fxLayoutAlign="center center">
+          <button mat-raised-button color="accent" (click)="openDialog()">Share!</button>
+        </div>
+        <div fxFlex="17" fxLayoutAlign="center center" >
+          <button 
+            mat-raised-button 
+            color="primary"
+            (click)="onSubmit()">{{ (noteForm.get('id').value === '0') ? 'Save' : 'Update' }}</button>
+        </div>
+        <mat-form-field fxFlex="100" hintLabel="Min 15 characters">
+          <textarea
+            matInput
+            formControlName="content"
+            placeholder="Place your content"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card>
+  </div>
+  <!-- <br> {{ noteForm.value | json }} -->
+</ng-template>

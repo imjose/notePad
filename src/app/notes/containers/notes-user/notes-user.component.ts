@@ -19,13 +19,13 @@ export class NotesUserComponent implements OnInit {
     private router: Router
   ) { }
 
-  onNote(id: number) {
-    console.log('We have receieved your mensaje, tssss, we recieved..', id);
-    console.log('We are about to do our second trip, now trough the router navigation system');
+  onNote(id: string) {
     this.router.navigate(['app/note', id]);
   }
 
   ngOnInit() {
     this.userNotes$ = this.notesService.getUserNotes();
+    // this.notesService.getUserNotes()
+    // .subscribe(note => console.log(note));
   }
 }

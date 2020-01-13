@@ -1,8 +1,22 @@
-/* Rules for sizing the icon. */
-
 .material-icons.md-36 { font-size: 36px; }
 
 mat-icon {
   height: 36px;
   width: 36px;
+}
+
+mat-list, cdk-virtual-scroll-viewport {
+  height: 288px;
+}
+
+.private {
+  height: 576px;
+}
+
+.note{
+  cursor: pointer;
+}
+
+.selected {
+  background-color: gray;
 }

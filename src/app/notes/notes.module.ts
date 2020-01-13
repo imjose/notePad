@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 // material
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,10 +26,11 @@ import { NotesHandlerComponent } from './containers/notes-handler/notes-handler.
 // components
 import { NotesViewComponent } from './components/notes-view/notes-view.component';
 import { NotesContentComponent } from './components/notes-content/notes-content.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 const routes: Routes = [
   {
-    path: 'app', component: NotesDashboardComponent,
+    path: '', component: NotesDashboardComponent,
     children: [
       { path: 'note/:id', component: NotesHandlerComponent }
     ]
@@ -42,7 +45,8 @@ const routes: Routes = [
     NotesUserComponent,
     NotesPublicComponent,
     NotesSharedComponent,
-    NotesHandlerComponent
+    NotesHandlerComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
@@ -50,14 +54,20 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     AngularFirestoreModule,
     FlexLayoutModule,
+    ScrollingModule,
+    FormsModule,
     // material
     MatCardModule,
     MatListModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatCheckboxModule,
     MatFormFieldModule,
+  ],
+  entryComponents: [
+    DialogComponent
   ]
 })
 export class NotesModule { }

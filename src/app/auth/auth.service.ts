@@ -24,7 +24,7 @@ export class AuthService {
   signIn(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
     .then(user => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/app']);
     });
   }
 
@@ -34,7 +34,7 @@ export class AuthService {
       console.log(`The user was created successfully.`);
       this.afAuth.auth.currentUser
         .updateProfile({displayName: firstName});
-      this.router.navigate(['/home']);
+      this.router.navigate(['/app']);
     });
   }
 
@@ -42,7 +42,7 @@ export class AuthService {
     this.afAuth.auth.signOut()
     .then(() => {
       console.log('user was logged out');
-      this.router.navigate(['/login']);
+      this.router.navigate(['auth/login']);
     });
   }
 }

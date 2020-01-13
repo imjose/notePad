@@ -1,35 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AppRoutingModule } from './app-routing.module';
 
-import { environment } from 'src/environments/environment';
-
-// customeModules
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+
 import { AppComponent } from './app.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    // AngularFirestoreModule,
+    MatToolbarModule,
+    MatButtonModule,
     // customeModules
     AuthModule,
-    NotesModule,
+    NotesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

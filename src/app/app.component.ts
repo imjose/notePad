@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'notePad';
+  title = 'notePad v1.02';
+
+  constructor(public authService: AuthService) {}
+
+  onClick() {
+    this.authService.logOut();
+  }
 }
