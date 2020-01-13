@@ -25,7 +25,5 @@ export class NotesUserComponent implements OnInit {
 
   ngOnInit() {
     this.userNotes$ = this.notesService.getUserNotes();
-    // this.notesService.getUserNotes()
-    // .subscribe(note => console.log(note));
   }
 }

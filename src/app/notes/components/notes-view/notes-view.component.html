@@ -17,7 +17,7 @@
     <mat-list [ngClass]="{ 'private' : privateNotes }">
       <cdk-virtual-scroll-viewport itemSize="72" [ngClass]="{ 'private' : privateNotes }">
         <div *cdkVirtualFor="let note of notes; last as last">
-          <mat-list-item (click)="onClick(note)" class="note" [ngClass]="{ 'selected' : selectedId === note.id }">
+          <mat-list-item (click)="onClick(note)" class="note">
             <mat-icon mat-list-icon>note</mat-icon>
             <h4 mat-line> {{ note.name }} </h4>
             <p mat-line> Modified on. {{ note.modifiedDate | date }} </p>

@@ -11,8 +11,6 @@ export class NotesViewComponent implements OnInit {
   @Input() privateNotes: boolean;
   @Output() selectedNote = new EventEmitter<string>();
 
-  selectedId: string;
-
   constructor(
   ) { }
 

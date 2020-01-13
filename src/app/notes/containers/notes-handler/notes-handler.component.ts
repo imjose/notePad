@@ -88,7 +88,6 @@ export class NotesHandlerComponent implements OnInit {
         data: this.noteForm.get('sharedWith').value
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         if (result) {
           this.noteForm.patchValue({
             sharedWith: result
